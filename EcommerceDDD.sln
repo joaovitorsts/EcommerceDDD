@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32106.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{F12634F3-5479-42CC-A0CB-99F1FBEEADCC}"
 EndProject
@@ -13,13 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Entities", "5 - Entities", "{ECDA9BAF-1A0C-44A8-8117-0B11AC5E4F30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{AD9668E1-1CC4-4A40-83C4-0640DC4CE214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{AD9668E1-1CC4-4A40-83C4-0640DC4CE214}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{0BAEEB0A-FA73-4164-BECB-289CE5C3EA56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{0BAEEB0A-FA73-4164-BECB-289CE5C3EA56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{3C7DD6F9-CC40-4009-86CA-B10547DEA0C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{3C7DD6F9-CC40-4009-86CA-B10547DEA0C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationApp", "ApplicationApp\ApplicationApp.csproj", "{E0994206-1260-44B9-9B08-4F3BF965EE22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationApp", "ApplicationApp\ApplicationApp.csproj", "{E0994206-1260-44B9-9B08-4F3BF965EE22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_ECommerce", "Web_ECommerce\Web_ECommerce.csproj", "{D516D64F-7652-4264-8D4D-400CA7A7E6A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{E0994206-1260-44B9-9B08-4F3BF965EE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0994206-1260-44B9-9B08-4F3BF965EE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0994206-1260-44B9-9B08-4F3BF965EE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D516D64F-7652-4264-8D4D-400CA7A7E6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D516D64F-7652-4264-8D4D-400CA7A7E6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D516D64F-7652-4264-8D4D-400CA7A7E6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D516D64F-7652-4264-8D4D-400CA7A7E6A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{0BAEEB0A-FA73-4164-BECB-289CE5C3EA56} = {BD61B8AB-BE0A-40E7-8EE7-6968AE054B9F}
 		{3C7DD6F9-CC40-4009-86CA-B10547DEA0C2} = {1D740455-968B-4440-BAA1-FFB64345267E}
 		{E0994206-1260-44B9-9B08-4F3BF965EE22} = {9D5DB063-0DAC-4334-B253-3C3E5E1D1EFA}
+		{D516D64F-7652-4264-8D4D-400CA7A7E6A3} = {F12634F3-5479-42CC-A0CB-99F1FBEEADCC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4604B716-C66B-4965-9CA2-B822AD478686}
