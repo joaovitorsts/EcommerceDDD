@@ -39,26 +39,21 @@ namespace Infrastructure.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    USR_CPF = table.Column<string>(maxLength: 50, nullable: true),
+                    USR_AGE = table.Column<int>(nullable: false),
+                    USR_NAME = table.Column<string>(maxLength: 255, nullable: true),
+                    USR_CEP = table.Column<string>(maxLength: 15, nullable: true),
+                    USR_ADDRESS = table.Column<string>(maxLength: 255, nullable: true),
+                    USR_ADDRESS_COMPLEMENT = table.Column<string>(maxLength: 450, nullable: true),
+                    USR_CELL = table.Column<string>(maxLength: 20, nullable: true),
+                    USR_PHONE = table.Column<string>(maxLength: 20, nullable: true),
+                    USR_STATE = table.Column<string>(maxLength: 20, nullable: true),
+                    USR_TYPE = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Product",
-                columns: table => new
-                {
-                    PRD_ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PRD_NOME = table.Column<string>(nullable: true),
-                    PRD_VALOR = table.Column<decimal>(nullable: false),
-                    PRD_ESTADO = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Product", x => x.PRD_ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,6 +162,61 @@ namespace Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    PRD_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PRD_NAME = table.Column<string>(maxLength: 255, nullable: true),
+                    PRD_DESCRIPTION = table.Column<string>(maxLength: 150, nullable: true),
+                    PRD_OBSERVATION = table.Column<string>(maxLength: 20000, nullable: true),
+                    PRD_VALUE = table.Column<decimal>(nullable: false),
+                    PRD_QTY_STOCK = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    PRD_STATE = table.Column<bool>(nullable: false),
+                    PRD_SIGNUP_DATE = table.Column<DateTime>(nullable: false),
+                    PRD_CHANGE_DATE = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.PRD_ID);
+                    table.ForeignKey(
+                        name: "FK_Product_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TB_USER_BUY",
+                columns: table => new
+                {
+                    CUS_ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(nullable: false),
+                    CUS_STATE = table.Column<int>(nullable: false),
+                    CUS_QUANTITY = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_USER_BUY", x => x.CUS_ID);
+                    table.ForeignKey(
+                        name: "FK_TB_USER_BUY_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "PRD_ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TB_USER_BUY_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -205,6 +255,21 @@ namespace Infrastructure.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_UserId",
+                table: "Product",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TB_USER_BUY_ProductId",
+                table: "TB_USER_BUY",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TB_USER_BUY_UserId",
+                table: "TB_USER_BUY",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -225,10 +290,13 @@ namespace Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "TB_USER_BUY");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
